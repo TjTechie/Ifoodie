@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 const RestaurantCard = ({name, cuisines, cloudinaryImageId, lastMileTravelString}) => {
     return(
         <div className="card">

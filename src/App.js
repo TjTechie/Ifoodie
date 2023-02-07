@@ -3,15 +3,48 @@ import ReactDOM from "react-dom/client";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import About from "./components/About";
+import Error from "./components/Error"
+import Contact from "./components/Contact";
+import RestaurantMenu from "./components/RestaurantMenu";
 
 const AppLayout = () => {
     return (
         <>
         <Header></Header>
-        <Body></Body>
+        {/* Render outlet accoring to the config. This will be dynamic */}
+        <Outlet></Outlet>
+        {/* <Body></Body> */}
         <Footer></Footer>
         </>   
     );
 }
+
+const appRouter = createBrowserRouter([{
+    path: "/",
+    element: <AppLayout></AppLayout>,
+    errorElement: <Error></Error>,
+    children: [
+        {
+            path: "/",
+            element: <Body></Body>
+        },
+        {
+            path: "/about",
+            element: <About></About>
+        },
+        {
+            path: "/contact",
+            element: <Contact></Contact>
+        },
+        {
+            path: "restuarant/:id",
+            element: <RestaurantMenu></RestaurantMenu>
+        },
+    ]
+}
+])
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout/>);
+root.render(<RouterProvider router={appRouter}/>);

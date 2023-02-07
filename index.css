@@ -37,3 +37,14 @@
 .logo {
     width: 100px;
 }
+
+.shimmer-card {
+    width: 200px;
+    height: 200px;
+    background: lightgrey;
+    margin: 20px;
+}
+
+.menu {
+    display: flex;
+}
