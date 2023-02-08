@@ -1,4 +1,4 @@
-#container {
+/* #container {
     background-color: red;
 }
 
@@ -47,4 +47,8 @@
 
 .menu {
     display: flex;
-}
+} */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

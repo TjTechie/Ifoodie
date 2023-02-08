@@ -7,7 +7,7 @@ import Shimmer from "./Shimmer";
 const RestaurantMenu = () => {
     const {id} = useParams();
     const restaurantDetails = useRestaurant(id);
-    
+
     return !restaurantDetails ? (
         <Shimmer />
       ) :

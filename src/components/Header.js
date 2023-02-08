@@ -5,22 +5,22 @@ import { Link } from "react-router-dom";
 const Title = () => {
 
 return (
-    <a href="/"><img alt="iFoodie-logo" src={Logo} className="logo"></img></a>
+    <a href="/"><img alt="iFoodie-logo" src={Logo} className="h-28 p-2"></img></a>
 );
 }
 
 const Header = () => {
     const [ isLoggedIn, setIsLoggedIn ] = useState(true);
     return (
-        <div className="header">
+        <div className="flex justify-between bg-pink-50 shadow-md md:bg-yellow-50 sm:bg-blue-50">
             <Title></Title>
             <div className="nav-items">
-                <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/about">About</Link></li>
-                    <li><Link to="/contact">Contact</Link></li>
-                    <li><Link to="/offers">Your offers</Link></li>
-                    <li>Cart</li>
+                <ul className="flex py10">
+                    <li className="px-2"><Link to="/">Home</Link></li>
+                    <li className="px-2"><Link to="/about">About</Link></li>
+                    <li className="px-2"><Link to="/contact">Contact</Link></li>
+                    <li className="px-2"><Link to="/offers">Your offers</Link></li>
+                    <li className="px-2">Cart</li>
                 </ul>                
             </div>
             {isLoggedIn ? (
