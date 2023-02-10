@@ -1,13 +1,15 @@
 import RestaurantCard from "./RestaurantCard";
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
 import useIsOnline from "../utils/useIsOnline";
 import useRestaurantList from "../utils/useRestaurantList";
+import UserContex from "../utils/UserContext";
 
 const Body = () => {
     const [ searchText, setSearchText ] = useState("KFC");
+    const {user, setUser} = useContext(UserContex);
 
     const [allRestaurants, filteredRestaurants, setFilteredRestaurants] = useRestaurantList();
 
@@ -27,6 +29,7 @@ const Body = () => {
                 const data = filterData( searchText, allRestaurants );
                 setFilteredRestaurants(data);
             }}>Search</button>
+            <input type="text" value={user.name} onChange={(e)=>setUser({...user, name:e.target.value})}></input>
         </div>
         <div className="flex flex-wrap justify-evenly bg-purple-900">
             {

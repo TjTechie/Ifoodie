@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
@@ -10,18 +10,25 @@ import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Profile from "./components/Profile";
 import Shimmer from "./components/Shimmer";
+import UserContex from "./utils/UserContext";
 // Lazy load offers section to have differnt bundling
 const YourOffers = lazy(()=> import("./components/YourOffers"));
 const About = lazy(()=> import("./components/About"));
 
 const AppLayout = () => {
+    const [user, setUser] = useState({
+        name: "Teju",
+        email: "teju@ContextProvider.com"
+    })
     return (
         <>
+        <UserContex.Provider value={{user:user, setUser:setUser}}>
         <Header></Header>
         {/* Render outlet accoring to the config. This will be dynamic */}
         <Outlet></Outlet>
         {/* <Body></Body> */}
         <Footer></Footer>
+        </UserContex.Provider>
         </>   
     );
 }
